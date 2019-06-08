@@ -12,17 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2019_06_08_135441) do
 
-  create_table "cats", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "cats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "position_x"
-    t.string "position_y"
-    t.string "url"
+    t.text "address"
+    t.string "longitude"
+    t.string "latitude"
+    t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
