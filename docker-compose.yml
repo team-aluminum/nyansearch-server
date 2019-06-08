@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+    db:
+        image: mysql:5.7.22
+        volumes:
+              - ./db/mysql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: nyan
+            MYSQL_USER: nyan
+            MYSQL_PASSWORD: nyan
+            MYSQL_DATABASE: nyan-search
+
+    app:
+        build: .
+        command: bundle exec rails s -p 3000 -b '0.0.0.0'
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: nyan
+          MYSQL_PASSWORD: nyan
+          MYSQL_DATABASE: nyan-search
+          MYSQL_HOST: db
+        volumes:
+            - ".:/rails"
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+        links:
+            - db
