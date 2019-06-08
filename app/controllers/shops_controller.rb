@@ -20,20 +20,20 @@ class ShopsController < ApplicationController
 
   private
   def get_distance(lng1, lat1, lng2, lat2)
-    x1 = lat1.to_f * Math::PI / 180
-    y1 = lng1.to_f * Math::PI / 180
-    x2 = lat2.to_f * Math::PI / 180
-    y2 = lng2.to_f * Math::PI / 180
+    x1 = lat1.to_f * PI / 180
+    y1 = lng1.to_f * PI / 180
+    x2 = lat2.to_f * PI / 180
+    y2 = lng2.to_f * PI / 180
     
     radius = 6378.137
     diff_y = (y1 - y2).abs
     
-    calc1 = Math.cos(x2) * Math.sin(diff_y)
-    calc2 = Math.cos(x1) * Math.sin(x2) - Math.sin(x1) * Math.cos(x2) * Math.cos(diff_y)
+    calc1 = cos(x2) * sin(diff_y)
+    calc2 = cos(x1) * sin(x2) - sin(x1) * cos(x2) * cos(diff_y)
     
-    numerator = Math.sqrt(calc1 ** 2 + calc2 ** 2)
-    denominator = Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) * Math.cos(diff_y)
-    degree = Math.atan2(numerator, denominator)
+    numerator = sqrt(calc1 ** 2 + calc2 ** 2)
+    denominator = sin(x1) * sin(x2) + cos(x1) * cos(x2) * cos(diff_y)
+    degree = atan2(numerator, denominator)
     return degree * radius
   end
 
