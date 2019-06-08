@@ -1,4 +1,3 @@
-include Math
 class ShopsController < ApplicationController
   def index
     @shops = Shop.get_shops_from_cord
