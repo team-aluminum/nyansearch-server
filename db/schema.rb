@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_06_08_135441) do
 
   create_table "cats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "shop_id", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
