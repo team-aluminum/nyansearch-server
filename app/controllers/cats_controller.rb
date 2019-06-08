@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   def index
-    @shops = Shop.all
+    @shops = Shop.get_cats_from_cord
   end
 
   def show
