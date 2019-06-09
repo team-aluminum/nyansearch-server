@@ -43,13 +43,11 @@ class Shop < ApplicationRecord
   def get_angle(lng1, lat1)
     lng2 = self.longitude.to_f
     lat2 = self.latitude.to_f
-    y = cos(lng2 * PI / 180) * sin(lat2 * PI / 180 - lat1 * PI / 180)
-    x = cos(lng1 * PI / 180) * sin(lng2 * PI / 180) - sin(lng1 * PI / 180) * cos(lng2 * PI / 180) * cos(lat2 * PI / 180 - lat1 * PI / 180)
-    dirE0 = 180 * atan2(y, x) / PI
+    dirE0 = 180 * atan2(cos(lng2 * PI / 180) * sin(lat2 * PI / 180 - lat1 * PI / 180), cos(lng1 * PI / 180) * sin(lng2 * PI / 180) - sin(lng1 * PI / 180) * cos(lng2 * PI / 180) * cos(lat2 * PI / 180 - lat1 * PI / 180)) / PI
     if (dirE0 < 0) then
       dirE0 = dirE0 + 360
     end
-    dirN0 = (dirE0 + 90) % 360
+    dirN0 = (dirE0 + 90 * self.id) % 360
     return dirN0
   end
 end
