@@ -6,7 +6,7 @@ json.cats do
     if shop.id === @nearest_shop.id then
       json.size 3
     else
-      json.size shop.id % 2 + 1
+      json.size shop.id % 3 + 1
     end
     json.names do
       json.array! shop.cats do |cat|
