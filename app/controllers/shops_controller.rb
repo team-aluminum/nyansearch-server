@@ -9,6 +9,6 @@ class ShopsController < ApplicationController
 
   private
   def get_user_dir(angle, user_direction)
-     return ((angle - user_direction) * 8 / 360).round
+    return ((angle - user_direction) * 8 / 360).round.abs
   end
 end

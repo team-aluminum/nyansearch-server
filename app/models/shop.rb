@@ -47,7 +47,7 @@ class Shop < ApplicationRecord
     if (dirE0 < 0) then
       dirE0 = dirE0 + 360
     end
-    dirN0 = (dirE0 + 90 * self.id) % 360
+    dirN0 = (dirE0 + 90 * self.id * self.id) % 360
     return dirN0
   end
 end
